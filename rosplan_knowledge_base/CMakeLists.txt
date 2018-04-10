@@ -79,11 +79,12 @@ set(VAL_SOURCES
 ## knowledge sources
 set(KNOWLEDGE_SOURCES
 	src/KnowledgeBase.cpp
-	src/PlanFilter.cpp
 	src/KnowledgeComparitor.cpp
 	src/DomainParser.cpp
+	src/ProblemParser.cpp
 	src/VALVisitorOperator.cpp
-	src/VALVisitorPredicate.cpp)
+	src/VALVisitorPredicate.cpp
+	src/VALVisitorProblem.cpp)
 
 ## Declare cpp executables
 add_executable(knowledgeBase ${KNOWLEDGE_SOURCES} ${VAL_SOURCES})
@@ -97,3 +98,13 @@ target_link_libraries(knowledgeBase ${catkin_LIBRARIES})
 ##########
 
 # please do not use add_rosttest_gtest (seems to be interfering with qtcreator and cmake)
+
+#############
+## Install ##
+#############
+
+install(TARGETS knowledgeBase
+  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
